@@ -12,7 +12,7 @@ function WeatherApp() {
   const fetchWeatherData = async () => {
     if (!city) return;
 
-    setLoading(true);
+    setLoading(true);  // Show loading state
     setWeatherData(null);
 
     try {
@@ -23,7 +23,7 @@ function WeatherApp() {
     } catch (err) {
       window.alert("Failed to fetch weather data");
     } finally {
-      setLoading(false);
+      setLoading(false);  // Hide loading state
     }
   };
 
@@ -39,9 +39,11 @@ function WeatherApp() {
         <button onClick={fetchWeatherData}>Search</button>
       </div>
 
-      {loading && <p className="loading">Loading data…</p>}
+      {/* Display loading state while fetching */}
+      {loading && <p className="loading">Loading data...</p>}
 
-      {weatherData && (
+      {/* Display weather data when available */}
+      {weatherData && !loading && (
         <div className="weather-cards">
           <div className="weather-card">
             <p>Temperature: {weatherData.current.temp_c}°C</p>
